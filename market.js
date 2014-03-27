@@ -9,6 +9,7 @@ var _ = require('underscore');
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
+var unorm = require('unorm');
 
 var sharedDirectory = path.resolve(process.argv[2]);
 
@@ -49,10 +50,10 @@ app.get(/^\/file(.*)/, function (req, res) {
       var fileStat = fs.lstatSync(filePath);
 
       if (fileStat.isDirectory()) {
-        result.dirs.push(fileName);
+        result.dirs.push(unorm.nfc(fileName));
       }
       if (fileStat.isFile()) {
-        result.files.push(fileName);
+        result.files.push(unorm.nfc(fileName));
       }
 
       return result;
