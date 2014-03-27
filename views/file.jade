@@ -29,10 +29,10 @@ html
       }
   body
     h1.path #{path}
-    form.upload(action='/upload', method='POST', enctype='multipart/form-data')
+    form.upload(action='/upload', method='POST', enctype='multipart/form-data', onsubmit='return (document.getElementById("File").value !== "");')
       div.subtitle File Upload
       input(type='hidden', name='path', value='#{path}')
-      input(type='file', name='file')
+      input#File(type='file', name='file')
       input(type='submit', value='업로드')
 
     ul.fileList
