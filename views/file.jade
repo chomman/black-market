@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title black-market: #{path}
+    style.
+      html, body {
+        color: #444;
+      }
+      h1.path {
+        font-size: 30px;
+      }
+      .subtitle {
+        font-size: 20px;
+      }
+      form.upload {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 5px;
+        width: 600px;
+      }
+      a.link, a.link:visited {
+        color: #444;
+        font-size: 20px;
+        text-decoration: none;
+      }
+      a.link:hover {
+        text-decoration: underline;
+      }
+  body
+    h1.path #{path}
+    form.upload(action='/upload', method='POST')
+      div.subtitle File Upload
+      input(type='file')
+      input(type='submit', value='업로드')
+
+    ul.fileList
+      if parentPath
+        li: a.link(href='/file#{parentPath}') ../
+      for dir in files.dirs
+        li: a.link(href='/file#{path}#{dir}') #{dir}/
+      for file in files.files
+        li: a.link(href='/file#{path}#{file}') #{file}
