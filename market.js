@@ -15,6 +15,7 @@ var sharedDirectory = path.resolve(process.argv[2]);
 var app = express();
 
 app.set('view engine', 'jade');
+app.use(express.logger());
 app.use('/file', express.static(sharedDirectory));
 
 app.get('/', function (req, res) {
@@ -65,4 +66,6 @@ app.get(/^\/file(.*)/, function (req, res) {
   });
 });
 
-app.listen(8080);
+app.listen(8080, function () {
+  console.log('Listening to port 8080...');
+});
