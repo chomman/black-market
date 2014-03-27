@@ -13,7 +13,7 @@ $ npm install
 $ ./make-bin
 ```
 
-And add `bin` directory to your `$PATH` or create a symlink to `bin/black-market`.
+And add `bin` directory to your `$PATH` or create a symlink of `bin/black-market` in `$PATH`.
 
 How to Use
 ----------
