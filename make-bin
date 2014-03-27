@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+CURRENT_DIR=`pwd`
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
+
+if [ ! -d bin ]; then
+  mkdir bin
+fi
+
+echo "#!/usr/bin/env bash
+CURRENT_PATH=\`pwd\`
+cd $DIR
+node market.js \$CURRENT_PATH
+cd \$CURRENT_PATH" > bin/black-market
+chmod 755 bin/black-market
+
+cd $CURRENT_DIR
