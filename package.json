@@ -1,0 +1,19 @@
+{
+  "name": "black-market",
+  "version": "0.0.0",
+  "description": "Node.js based simple file sharing app.",
+  "main": "market.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/noraesae/black-market.git"
+  },
+  "author": "Hyeonje Jun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noraesae/black-market/issues"
+  },
+  "homepage": "https://github.com/noraesae/black-market"
+}
