@@ -26,6 +26,9 @@ app.get(/^\/file(.*)/, function (req, res) {
   if (!dir || dir === '') {
     dir = '/';
   }
+  if (dir[dir.length - 1] !== '/') {
+    dir += '/';
+  }
   var absoluteDir = path.join(sharedDirectory, dir);
   var parentPath = dir === '/' ? null : path.dirname(dir);
 
