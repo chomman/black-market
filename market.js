@@ -66,6 +66,25 @@ app.get(/^\/file(.*)/, function (req, res) {
   });
 });
 
+app.post('/upload', express.bodyParser({limit: '10gb'}), function (req, res) {
+  fs.readFile(req.files.file.path, function (err, data) {
+    if (err) {
+      res.send(500, err);
+      return;
+    }
+
+    var uploadPath = path.join(sharedDirectory, req.body.path, req.files.file.name);
+    fs.writeFile(uploadPath, data, function (err) {
+      if (err) {
+        res.send(500, err);
+        return;
+      }
+
+      res.redirect('/file' + req.body.path);
+    });
+  });
+});
+
 app.listen(8080, function () {
   console.log('Listening to port 8080...');
 });
